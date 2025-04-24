@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gramentheme">
+    <meta name="description" content="Niotech - App Landing HTML Template">
+    <!-- ======== Page title ============ -->
+    <title>CUSP - NYC Neighborhood Dashboard</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< NiceSelect.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        .txt-loading span {
+            color: #7444FD !important;  /* NYU Purple */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="N">
+                    N
+                </span>
+                <span data-text-preloader="Y">
+                    Y
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="C">
+                    C
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="S">
+                    S
+                </span>
+                <span data-text-preloader="P">
+                    P
+                </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Cursor Start -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- Back To Top Start -->
+    <button id="back-top" class="back-to-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Header Section Start -->
+    <header class="header-section-1">
+        <div id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-middle">
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown active menu-thumb">
+                                                <a href="index.html">
+                                                    Home
+                                                </a>
+                                            <li>
+                                                <a href="about.html">
+                                                    About Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard.html">
+                                                    Dashboard
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="differences.html">
+                                                    Differences
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="faq.html">
+                                                    Faq's
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Area Start -->
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcumb Section S T A R T -->
+    <div class="breadcumb-section fix">
+        <div class="breadcumb-container-wrapper" data-bg-src="assets/images/bg/breadcumgBg.png">
+            <div class="container">
+                <div class="shape1"><img src="assets/images/shape/breadCumbShape1_1.png" alt="shape"></div>
+                <div class="shape2"><img src="assets/images/shape/breadCumbShape1_2.png" alt="shape"></div>
+                <div class="breadcumb-wrapper">
+                    <div class="page-heading">
+                        <h1>FAQ’s</h1>
+                        <div class="links">
+                            <a href="index.html">Home<span class="slash">/</span></a> FAQ’s
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Faq Section S T A R T -->
+    <section class="faq-section section-padding fix">
+        <div class="faq-container-wrapper style2">
+            <div class="container">
+                <div class="faq-wrapper style2">
+                    <div class="row gy-5 gx-100">
+                        <div class="col-xl-6">
+                            <div class="faq-thumb">
+                                <img src="assets/images/faq/faqThumb3_2.png" alt="thumb">
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="faq-content style1 mt-0">
+                                <div class="faq-accordion">
+                                    <div class="accordion" id="accordion">
+                                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".3s">
+                                            <h5 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#faq1"
+                                                    aria-expanded="true" aria-controls="faq1">
+                                                    Have you noticed recurring issues in your neighborhood?
+                                                </button>
+                                            </h5>
+                                            <div id="faq1" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordion">
+                                                <div class="accordion-body">
+                                                    You’re not imagining things. 
+                                                    From noise complaints to missed sanitation pickups, 
+                                                    many neighborhoods face recurring challenges. 
+                                                    Our platform collects and visualizes this data to 
+                                                    help you see the patterns clearly, based on available information.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".5s">
+                                            <h5 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#faq2"
+                                                    aria-expanded="false" aria-controls="faq2">
+                                                    Curious how the city is responding to local complaints?
+                                                </button>
+                                            </h5>
+                                            <div id="faq2" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordion">
+                                                <div class="accordion-body">
+                                                    We track government actions linked to specific community issues—so 
+                                                    you can understand what’s been done, what’s ongoing, 
+                                                    and where responses may still be lacking, and what other actions may need to be taken or measured.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".5s">
+                                            <h5 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#faq3"
+                                                    aria-expanded="false" aria-controls="faq3">
+                                                    Wondering if your neighborhood is getting enough attention?
+                                                </button>
+                                            </h5>
+                                            <div id="faq3" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordion">
+                                                <div class="accordion-body">
+                                                    Our data compares different neighborhoods based on complaint volume and government responses. 
+                                                    This way, you can see if certain areas are being underserved—and bring that into the conversation.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".5s">
+                                            <h5 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#faq4"
+                                                    aria-expanded="false" aria-controls="faq4">
+                                                    How can this platform support our policy or planning work?
+                                                </button>
+                                            </h5>
+                                            <div id="faq4" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordion">
+                                                <div class="accordion-body">
+                                                    We provide neighborhood-level insights into persistent issues—such as noise, 
+                                                    sanitation, or air quality—and track how government actions impact sentiment and complaint levels. 
+                                                    This enables agencies to assess response effectiveness and identify areas needing targeted intervention.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".7s">
+                                            <h5 class="accordion-header">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                                                    How can this tool help us prioritize resource allocation?
+                                                </button>
+                                            </h5>
+                                            <div id="faq6" class="accordion-collapse show" data-bs-parent="#accordion">
+                                                <div class="accordion-body">
+                                                    By identifying neighborhoods with high issue frequency and low government response effectiveness, 
+                                                    the platform supports more equitable, effective, and strategic deployment of public resources.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".5s">
+                                            <h5 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#faq5"
+                                                    aria-expanded="false" aria-controls="faq5">
+                                                    Is the data validated or aligned with official city datasets?
+                                                </button>
+                                            </h5>
+                                            <div id="faq5" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordion">
+                                                <div class="accordion-body">
+                                                    Yes. All data is sourced from NYC Open Data, Equity NYC, NYC.gov, 
+                                                    Citizens Budget Commission (CBC), NYC Planning, NYC Census Data, and NYC Mayor’s Office of Operations. We ensure consistency 
+                                                    with official geographies and time ranges.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section    S T A R T -->
+    <footer class="footer-section position-relative">
+        <div class="footer-widgets-wrapper style1 fix">
+            <div class="shape1"><img src="assets/images/shape/footerShape1_1.png" alt="shape"></div>
+            <div class="shape2"><img src="assets/images/shape/footerShape1_2.png" alt="shape"></div>
+            <div class="shape3"><img src="assets/images/shape/footerShape1_3.png" alt="shape"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="footer-content">
+                                <p>
+                                Cities are made of stories, people, and data. At NYU, we use all three to build better urban futures.
+                                </p>
+                                <p><small>This site is not available on mobile devices. Please access it from a desktop.</small></p>
+                                <div class="store-links">
+                                    <div class="CUSP">
+                                        <a href="https://engineering.nyu.edu/research-innovation/centers/cusp"> NYU CUSP</a>
+                                    </div>
+                                    <div class="marroninstitute">
+                                        <a href="https://marroninstitute.nyu.edu/"> NYU Marron Institute</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </footer>
+
+    <!--<< All JS Plugins >>-->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!--<< Tilt Js >>-->
+    <script src="assets/js/tilt.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific popup Js >>-->
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="assets/js/wow.min.js"></script>
+    <!--<< NIce Select Js >>-->
+    <script src="assets/js/nice-select.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

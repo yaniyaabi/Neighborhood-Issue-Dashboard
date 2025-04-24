@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gramentheme">
+    <meta name="description" content="Niotech - App Landing HTML Template">
+    <!-- ======== Page title ============ -->
+    <title>CUSP - NYC Neighborhood Dashboard</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< NiceSelect.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        .txt-loading span {
+            color: #7444FD !important;  /* NYU Purple */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="N">
+                    N
+                </span>
+                <span data-text-preloader="Y">
+                    Y
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="C">
+                    C
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="S">
+                    S
+                </span>
+                <span data-text-preloader="P">
+                    P
+                </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Cursor Start -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- Back To Top Start -->
+    <button id="back-top" class="back-to-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Header Section Start -->
+    <header class="header-section-1">
+        <div id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-middle">
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown active menu-thumb">
+                                                <a href="index.html">
+                                                    Home
+                                                </a>
+                                            <li>
+                                                <a href="about.html">
+                                                    About Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard.html">
+                                                    Dashboard
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="differences.html">
+                                                    Differences
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="faq.html">
+                                                    Faq's
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Area Start -->
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcumb Section S T A R T -->
+    <div class="breadcumb-section fix">
+        <div class="breadcumb-container-wrapper" data-bg-src="assets/images/bg/breadcumgBg.png">
+            <div class="container">
+                <div class="shape1"><img src="assets/images/shape/breadCumbShape1_1.png" alt="shape"></div>
+                <div class="shape2"><img src="assets/images/shape/breadCumbShape1_2.png" alt="shape"></div>
+                <div class="breadcumb-wrapper">
+                    <div class="page-heading">
+                        <h1>About Us</h1>
+                        <div class="links">
+                            <a href="index.html">Home<span class="slash">/</span></a>About Us
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section S T A R T -->
+    <section class="team-section-3 section-padding pt-100 fix">
+        <div class="container">
+            <div class="section-title text-center mxw-685 mx-auto">
+                <h2 class="title wow fadeInUp" data-wow-delay=".4s">Mapping NYC, Together</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-4 col-md-6">
+                    <div class="team-card style1 wow fadeInLeft" data-wow-delay=".3s">
+                        <div class="team-thumb">
+                            <img src="assets/images/team/teamThumb1_1.png" alt="thumb">
+                        </div>
+                        <div class="team-card-content">
+                            <h3>
+                                <a href="team-details.html">Soohyun Bae</a>
+                            </h3>
+                            <p class="designation">Data Analyst(Team Leader)</p>
+                            <ul class="social-links">
+                                <li><a href="mailto:yaniyaabi@gmail.com"><i class="fa-solid fa-envelope"></i></a></li>
+                                <li><a href="https://www.instagram.com/yaniyaa_b/"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/yaniyaabi/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                <li><a href="https://github.com/yaniyaabi"><i class="fa-brands fa-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="team-card style1 wow fadeInLeft" data-wow-delay=".5s">
+                        <div class="team-thumb">
+                            <img src="assets/images/team/teamThumb1_2.png" alt="thumb">
+                        </div>
+                        <div class="team-card-content">
+                            <h3>
+                                <a href="team-details.html">Harley Yang</a>
+                            </h3>
+                            <p class="designation">Data Analyst</p>
+                            <ul class="social-links">
+                                <li><a href="mailto:yy3821@nyu.edu"><i class="fa-solid fa-envelope"></i></a></li>
+                                <li><a href="https://www.instagram.com/harleyyang/"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/harley-y-aa3155330/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                <li><a href="https://github.com/harleyyyh"><i class="fa-brands fa-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="team-card style1 wow fadeInLeft" data-wow-delay=".6s">
+                        <div class="team-thumb">
+                            <img src="assets/images/team/teamThumb1_3.png" alt="thumb">
+                        </div>
+                        <div class="team-card-content">
+                            <h3>
+                                <a href="team-details.html">Tim Tompkins</a>
+                            </h3>
+                            <p class="designation">Project Sponsor</p>
+                            <ul class="social-links">
+                                <li><a href="mailto:tmt6@nyu.edu"><i class="fa-solid fa-envelope"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/tim-tompkins-40357bb/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Us Section S T A R T -->
+    <section class="about-section fix">
+        <div class="about-container-wrapper style1">
+            <div class="container">
+                <div class="about-wrapper style1">
+                    <div class="row gy-5 gx-60">
+                        <div class="col-xl-6">
+                            <div class="about-thumb">
+                                <div class="bg"></div>
+                                <div class="thumbShape1 d-none d-xxl-block cir36"><img
+                                        src="assets/images/shape/aboutThumbShape1_1.png" alt="shape"></div>
+                                <div class="thumbShape2 d-none d-xxl-block cir36"><img
+                                        src="assets/images/shape/aboutThumbShape1_2.png" alt="shape"></div>
+                                <div class="thumbShape3 d-none d-xxl-block cir36 float-bob-y"><img
+                                        src="assets/images/shape/aboutThumbShape1_3.png" alt="shape"></div>
+                                <div class="thumbShape4 d-none d-xxl-block cir36"><img
+                                        src="assets/images/shape/aboutThumbShape1_4.png" alt="shape"></div>
+                                <div class="main-thumb">
+                                    <img src="assets/images/about/aboutThumb1_1.png" alt="thumb">
+                                </div>
+                                <div class="absolute-thumb float-bob-x">
+                                    <img src="assets/images/about/aboutThumb1_2.png" alt="thumb">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="about-content">
+                                <div class="section-title">
+                                    <div class="subtitle wow fadeInUp" data-wow-delay=".2s">
+                                        About the Project<img src="assets/images/icon/fireIcon.svg" alt="icon">
+                                    </div>
+                                    <h2 class="title wow fadeInUp" data-wow-delay=".4s">Visualizing NYC Neighborhood Issues with Data</h2>
+                                    <p class="section-desc wow fadeInUp" data-wow-delay=".6s"> We built an interactive dashboard that helps New Yorkers 
+                                        and policymakers better understand neighborhood-level challenges across the city. 
+                                        Our project highlights disparities in housing, sanitation, noise, and more—making 
+                                        it easier to act on the issues that matter most.</p>
+                                </div>
+                                <ul class="checklist style1 wow fadeInUp" data-wow-delay=".2s">
+                                    <li><img src="assets/images/icon/checkmarkIcon.svg" alt="icon"> Four key issue categories across two neighborhoods.</li>
+                                    <li><img src="assets/images/icon/checkmarkIcon.svg" alt="icon"> Built on official NYC datasets to support informed decisions. </li>
+                                    <li><img src="assets/images/icon/checkmarkIcon.svg" alt="icon"> Designed for both citizens and city agencies. </li>
+                                </ul>
+                                <a class="theme-btn wow fadeInUp" data-wow-delay=".2s" href="about.html">Discover More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <g clip-path="url(#clip0_18_41)">
+                                            <path
+                                                d="M11.6118 3.61182L10.8991 4.32454L14.0706 7.49603H0V8.50398H14.0706L10.8991 11.6754L11.6118 12.3882L16 7.99997L11.6118 3.61182Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_18_41">
+                                                <rect width="16" height="16" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <!-- Work Process Section S T A R T -->
+    <section class="work-process-section section-padding fix">
+        <div class="work-process-container-wrapper style1">
+            <div class="container">
+                <div class="section-title text-center mxw-565 mx-auto">
+                    <div class="subtitle wow fadeInUp" data-wow-delay=".2s">
+                        How It Work <img src="assets/images/icon/fireIcon.svg" alt="icon">
+                    </div>
+                    <h2 class="title wow fadeInUp" data-wow-delay=".4s">Our Process for Analyzing Neighborhood Issues</h2>
+                </div>
+                <div class="work-process-wrapper style1">
+                    <div class="shape"><img src="assets/images/shape/workProcessShape1_1.png" alt="shape"></div>
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="work-process-box style1 wow fadeInUp" data-wow-delay=".2s">
+                                <div class="step">STEP - 01</div>
+                                <div class="title">Conditions Data</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="work-process-box style1 child2 wow fadeInUp" data-wow-delay=".4s">
+                                <div class="step">STEP - 02</div>
+                                <div class="title">Neighborhood Sentiment: What People are Concerned About</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="work-process-box style1 wow fadeInUp" data-wow-delay=".6s">
+                                <div class="step">STEP - 03</div>
+                                <div class="title">Government Actions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Used Technology Section Start -->
+    <section class="used-technology-section section-padding pt-30 fix">
+        <div class="container">
+            <div class="section-title text-center mb-50 mx-auto">
+                <h2 class="title wow fadeInUp" data-wow-delay=".4s">Technologies Behind Our Dashboard.</h2>
+            </div>
+            <div class="tab-content">
+                <div id="End" class="tab-pane fade show active">
+                    <div class="technology-box-items-wrapper style-4 mt-0">
+                        <div class="technology-box-items style-4">
+                            <div class="logo">
+                                <img src="assets/images/icon/html.png" alt="logo">
+                            </div>
+                            <div class="title">HTML5</div>
+                        </div>
+                        <div class="technology-box-items style-4">
+                            <div class="logo">
+                                <img src="assets/images/icon/css.png" alt="logo">
+                            </div>
+                            <div class="title">CSS3</div>
+                        </div>
+                        <div class="technology-box-items style-4">
+                            <div class="logo">
+                                <img src="assets/images/icon/python.png" alt="logo">
+                            </div>
+                            <div class="title">PYTHON</div>
+                        </div>
+                        <div class="technology-box-items style-4">
+                            <div class="logo">
+                                <img src="assets/images/icon/js.png" alt="logo">
+                            </div>
+                            <div class="title">JavaScript</div>
+                        </div>
+                        <div class="technology-box-items style-4">
+                            <div class="logo">
+                                <img src="assets/images/icon/d3-js-icon.png" alt="logo">
+                            </div>
+                            <div class="title">D3.js</div>
+                        </div>
+                        <div class="technology-box-items style-4">
+                            <div class="logo">
+                                <img src="assets/images/icon/chart-js-logo.png" alt="logo">
+                            </div>
+                            <div class="title">Chart.js</div>
+                        </div>
+                        <div class="technology-box-items style-4">
+                            <div class="logo">
+                                <img src="assets/images/icon/gis.png" alt="logo">
+                            </div>
+                            <div class="title">ArcGIS Pro</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section    S T A R T -->
+    <footer class="footer-section position-relative">
+        <div class="footer-widgets-wrapper style1 fix">
+            <div class="shape1"><img src="assets/images/shape/footerShape1_1.png" alt="shape"></div>
+            <div class="shape2"><img src="assets/images/shape/footerShape1_2.png" alt="shape"></div>
+            <div class="shape3"><img src="assets/images/shape/footerShape1_3.png" alt="shape"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="footer-content">
+                                <p>
+                                Cities are made of stories, people, and data. At NYU, we use all three to build better urban futures.
+                                </p>
+                                <p><small>This site is not available on mobile devices. Please access it from a desktop.</small></p>
+                                <div class="store-links">
+                                    <div class="CUSP">
+                                        <a href="https://engineering.nyu.edu/research-innovation/centers/cusp"> NYU CUSP</a>
+                                    </div>
+                                    <div class="marroninstitute">
+                                        <a href="https://marroninstitute.nyu.edu/"> NYU Marron Institute</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </footer>
+
+
+
+    <!--<< All JS Plugins >>-->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!--<< Tilt Js >>-->
+    <script src="assets/js/tilt.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific popup Js >>-->
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="assets/js/wow.min.js"></script>
+    <!--<< NIce Select Js >>-->
+    <script src="assets/js/nice-select.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

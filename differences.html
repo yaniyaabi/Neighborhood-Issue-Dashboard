@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gramentheme">
+    <meta name="description" content="Niotech - App Landing HTML Template">
+    <!-- ======== Page title ============ -->
+    <title>CUSP - NYC Neighborhood Dashboard</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< NiceSelect.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        .map-container {
+          display: block;              
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+      
+        .map-box {
+          display: inline-block;       
+          margin-right: 20px;
+          vertical-align: top;
+        }
+      
+        .map-title {
+          font-weight: bold;
+          margin-bottom: 6px;
+          font-size: 16px;
+          text-align: left;
+        }
+      
+        #popupModal {
+          display: none;
+          position: absolute;
+          background: white;
+          border: 1px solid #ccc;
+          padding: 6px 12px;
+          font-size: 14px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+          border-radius: 4px;
+          z-index: 1000;
+          pointer-events: none;
+        }
+        
+        .txt-loading span {
+            color: #7444FD !important;  /* NYU Purple */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="N">
+                    N
+                </span>
+                <span data-text-preloader="Y">
+                    Y
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="C">
+                    C
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="S">
+                    S
+                </span>
+                <span data-text-preloader="P">
+                    P
+                </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Cursor Start -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- Back To Top Start -->
+    <button id="back-top" class="back-to-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Header Section Start -->
+    <header class="header-section-1">
+        <div id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-middle">
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown active menu-thumb">
+                                                <a href="index.html">
+                                                    Home
+                                                </a>
+                                            <li>
+                                                <a href="about.html">
+                                                    About Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard.html">
+                                                    Dashboard
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="differences.html">
+                                                    Differences
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="faq.html">
+                                                    Faq's
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Area Start -->
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcumb Section S T A R T -->
+    <div class="breadcumb-section fix">
+        <div class="breadcumb-container-wrapper" data-bg-src="assets/images/bg/breadcumgBg.png">
+            <div class="container">
+                <div class="shape1"><img src="assets/images/shape/breadCumbShape1_1.png" alt="shape"></div>
+                <div class="shape2"><img src="assets/images/shape/breadCumbShape1_2.png" alt="shape"></div>
+                <div class="breadcumb-wrapper">
+                    <div class="page-heading">
+                        <h1>Differences</h1>
+                        <div class="links">
+                            <a href="index.html">Home<span class="slash">/</span></a>MN08 & MN11
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Details Section S T A R T -->
+    <section class="news-standard section-padding fix">
+        <div class="container">
+            <div class="news-details-area">
+                <div class="row g-5">
+                    <div class="col-12 col-lg-8">
+                        <div class="blog-post-details">
+                            <div class="single-blog-post">
+                                <div class="post-featured-thumb" data-bg-src="assets/images/blog/blogCardThumb3_1.png">
+                                </div>
+                                <div class="post-content">
+                                    <ul class="post-list d-flex align-items-center wow fadeInUp" data-wow-delay=".2s">
+                                        <li>
+                                            <i class="fa-light fa-user"></i>
+                                            By Admin
+                                        </li>
+                                        <li>
+                                            <i class="fa-light fa-comments"></i>
+                                            2 Comments
+                                        </li>
+                                    </ul>
+                                    <h3 class="wow fadeInUp" data-wow-delay=".4s">Tackling the Differnces of Community Districs: MN08 & MN11</h3>
+                                        <div class="map-container">
+                                            <div class="map-box">
+                                                <div class="map-title">Manhattan 08</div>
+                                                <div id="map_2020"></div>
+                                            </div>
+                                            <div class="map-box">
+                                                <div class="map-title">Manhattan 11</div>
+                                                <div id="map_2021"></div>
+                                            </div>
+                                            <div id="popupModal"></div>
+                                        </div>
+
+                                        <script src="https://d3js.org/d3.v7.min.js"></script>
+                                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                        <script>
+                                            const width = 340;
+                                            const height = 390;
+                                        
+                                            function drawMap(containerId, highlightDistrict, highlightColor) {
+                                                const svg = d3.select(`#${containerId}`)
+                                                    .append("svg")
+                                                    .attr("width", width)
+                                                    .attr("height", height);
+
+                                                const projection = d3.geoMercator()
+                                                    .center([-74, 40.7])
+                                                    .scale(28000)
+                                                    .translate([width / 2, height / 2]);
+
+                                                const path = d3.geoPath().projection(projection);
+
+                                                d3.json("assets/data/nycd.geojson").then(geojsonData => {
+                                                    svg.selectAll("path")
+                                                        .data(geojsonData.features)
+                                                        .enter()
+                                                        .append("path")
+                                                        .attr("d", path)
+                                                        .attr("fill", d => d.properties.BoroCD === highlightDistrict ? highlightColor : "#ffe8cc")
+                                                        .attr("stroke", "#333")
+                                                        .attr("stroke-width", 0.8)
+                                                        .on("mouseover", function (event, d) {
+                                                            const boroCD = d.properties.BoroCD;
+                                                            showPopup(event, `Community District: ${boroCD}`);
+                                                            if (boroCD === highlightDistrict) {
+                                                                d3.select(this).attr("fill", d3.color(highlightColor).darker(1));
+                                                            } else {
+                                                                d3.select(this).attr("fill", "#ffd8a8");
+                                                            }
+                                                        })
+                                                        .on("mousemove", movePopup)
+                                                        .on("mouseout", function (event, d) {
+                                                            const boroCD = d.properties.BoroCD;
+                                                            d3.select(this).attr("fill", boroCD === highlightDistrict ? highlightColor : "#ffe8cc");
+                                                            hidePopup();
+                                                        });
+                                                });
+                                            }
+
+                                            function showPopup(event, text) {
+                                                const popup = document.getElementById("popupModal");
+                                                popup.innerText = text;
+                                                popup.style.left = event.pageX + 10 + "px";
+                                                popup.style.top = event.pageY - 20 + "px";
+                                                popup.style.display = "block";
+                                            }
+                                        
+                                            function movePopup(event) {
+                                                const popup = document.getElementById("popupModal");
+                                                popup.style.left = event.pageX + 10 + "px";
+                                                popup.style.top = event.pageY - 20 + "px";
+                                            }
+                                        
+                                            function hidePopup() {
+                                                document.getElementById("popupModal").style.display = "none";
+                                            }
+                                        
+                                            // 맵 호출 시 하이라이트할 district 번호 전달
+                                            drawMap("map_2020", 108, "#999999");  // Manhattan 08 → 회색
+                                            drawMap("map_2021", 111, "#8B0000");  // Manhattan 11 → 다크레드
+                                        </script>
+                                        
+                                        <!-- Chart 1: Number of Complaints -->
+                                        <div class="project-chart" style="text-align: center; margin-top: 30px; margin-bottom: 50px;">
+                                            
+                                            <label for="csvFileSelect_1">What People Are Talking About:</label>
+                                            <select id="csvFileSelect_1">
+                                                <option value="" disabled selected>Select a file</option>
+                                                <option value="Air Quality_2023 (NYC Residential Survey).csv">Air Quality_2023 (NYC Residential Survey).csv</option>
+                                                <option value="Control of Street Noise_2023 (NYC Residential Survey).csv">Control of Street Noise_2023 (NYC Residential Survey).csv</option>
+                                                <option value="Neighborhood Cleanliness_2023 (NYC Residential Survey).csv">Neighborhood Cleanliness_2023 (NYC Residential Survey).csv</option>
+                                                <option value="Public Housing_2023 (NYC Residential Survey).csv">Public Housing_2023 (NYC Residential Survey).csv</option>
+                                            </select>
+                                            <div style="width: 100%; height: 300px;">
+                                                <canvas id="airquality_data"></canvas>
+                                            </div>
+                                        </div>
+
+                                        <!-- Chart 2: Level of Agreement -->
+                                        <div class="project-chart" style="text-align: center; margin-top: 30px; margin-bottom: 50px;">
+                                            
+                                            <label for="csvFileSelect_2">Government Action:</label>
+                                            <select id="csvFileSelect_2">
+                                                <option value="" disabled selected>Select a file</option>
+                                                <option value="Air Quality Complaints Received_2024 (MMR).csv">Air Quality Complaints Received_2024 (MMR).csv</option>
+                                                <option value="Noise Complaints Received_2024 (MMR).csv">Noise Complaints Received_2024 (MMR).csv</option>
+                                                <option value="Service for Homeless People_2023 (NYC Residential Survey).csv">Service for Homeless People_2023 (NYC Residential Survey).csv</option>
+                                            </select>
+                                            <div style="width: 100%; height: 300px;">
+                                                <canvas id="airquality_wps"></canvas>
+                                            </div>
+                                            <div id="govDescription" style="text-align: center; font-size: 16px; margin-top: 10px;"></div>
+                                        </div>
+                
+                                    <p class="mb-3 wow fadeInUp" data-wow-delay=".6s">
+                                        The number of residential complaints from 311  in District 108 and District 111 continued to rise, despite  efforts by the government to address these issues. 
+                                        Noise, sanitation, and air quality problems have not shown any significant improvements, as more people continue to complain about these issues. Homelessness 
+                                        problems seem to have improved, but the achievement is less significant, and the overall residential satisfaction rate is still low. The following is a breakdown 
+                                        of each neighborhood issue in a greater detail.
+                                    </p>
+                                    <p class="mb-3 wow fadeInUp" data-wow-delay=".8s">
+                                        In general, residents are currently more satisfied with sanitation conditions in District 108 than in 111, and greater progress has been made over time in District 108 
+                                        compared to District 111. The number of unsanitary conditions reported through 311 is noticeably lower in District 108 than in 111. In terms of government actions taken, 
+                                        data suggests greater increases in activity in District 108 compared to District 111. 
+                                    </p>
+                                    <p class="mb-3 wow fadeInUp" data-wow-delay=".8s">
+                                        Air pollutant levels in District 108 and 111 have decreased during the last four years. However, residents are more satisfied with air quality conditions in District 108 
+                                        than in District 111. Fine particles and nitrogen dioxide levels stay consistent across both District 108 and District 111. In terms of government actions taken, 
+                                        data suggests great improvement in air quality in District 108 compared to District 111.   
+                                    </p>
+                                    <p class="wow fadeInUp" data-wow-delay="1s">
+                                        Noise has remained a leading complaint among residents in recent years. The annual count of noise complaints from 311 has continued to increase in both District 108 and District 111, 
+                                        and the number is significantly higher in District 111 than in District 108, even though the government issued noise control in both areas. 
+                                        Reported noise concerns are mainly from the street, residential, commercial, and park areas. In general, residents are more satisfied with noise conditions 
+                                        in District 108 than in 111, with a satisfaction rate of 41 percent and 13.9 percent, respectively.
+                                    </p>
+                                    <p class="mt-4 mb-5 wow fadeInUp" data-wow-delay="1s">
+                                        By one measure, homeless issues have improved slightly within the last few years. Fewer people complain about homeless concerns like illegal encampments according to 311 data. 
+                                        However, residents are more satisfied with homeless prevention in District 111 than in District 108, and greater progress has been made over time in District 111 compared to 
+                                        District 108. In terms of government actions taken, data suggests great improvement in homeless prevention in District 111 compared to District 108. 
+                                    </p>
+
+                                    <div class="row g-4 wow fadeInUp" data-wow-delay="1s">
+                                        <div class="col-lg-6">
+                                            <div class="details-image">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="details-image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="main-sidebar">
+                            <div class="single-sidebar-widget wow fadeInUp" data-wow-delay=".8s">
+                                <div class="wid-title">
+                                    <h3>Tags</h3>
+                                </div>
+                                <div class="news-widget-categories">
+                                    <div class="tagcloud">
+                                        <a>Noise</a>
+                                        <a>Sanitation</a>
+                                        <a>Employment</a>
+                                        <a>Housing</a>
+                                        <a>Crime & Safety</a>
+                                        <a>Air Quality</a>
+                                        <a>Neighborhood Issues</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section    S T A R T -->
+    <footer class="footer-section position-relative">
+        <div class="footer-widgets-wrapper style1 fix">
+            <div class="shape1"><img src="assets/images/shape/footerShape1_1.png" alt="shape"></div>
+            <div class="shape2"><img src="assets/images/shape/footerShape1_2.png" alt="shape"></div>
+            <div class="shape3"><img src="assets/images/shape/footerShape1_3.png" alt="shape"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="footer-content">
+                                <p>
+                                Cities are made of stories, people, and data. At NYU, we use all three to build better urban futures.
+                                </p>
+                                <p><small>This site is not available on mobile devices. Please access it from a desktop.</small></p>
+                                <div class="store-links">
+                                    <div class="CUSP">
+                                        <a href="https://engineering.nyu.edu/research-innovation/centers/cusp"> NYU CUSP</a>
+                                    </div>
+                                    <div class="marroninstitute">
+                                        <a href="https://marroninstitute.nyu.edu/"> NYU Marron Institute</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </footer>
+
+    <!--<< All JS Plugins >>-->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!--<< Tilt Js >>-->
+    <script src="assets/js/tilt.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific popup Js >>-->
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="assets/js/wow.min.js"></script>
+    <!--<< NIce Select Js >>-->
+    <script src="assets/js/nice-select.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="assets/js/main.js"></script>
+    <script>
+        let airquality_data = null;
+        let airquality_wps = null;
+        const govDescriptions = {
+            "Air Quality Complaints Received_2024 (MMR).csv": "99% of air quality complaints not requiring access to premises are responded to within 7 days",
+            "Noise Complaints Received_2024 (MMR).csv": "98% of noise complaints not requiring access to premises are responded to within 7 days"
+        };
+
+        document.getElementById("csvFileSelect_1").addEventListener("change", function(event) {
+            loadCSV(event.target.value, 'airquality_data', "data/difference_survey/");
+        });
+
+        document.getElementById("csvFileSelect_2").addEventListener("change", function(event) {
+            loadCSV(event.target.value, 'airquality_wps', "data/difference_government/");
+        });
+
+        function loadCSV(fileName, chartId, folderPath) {
+            if (!fileName) return;
+    
+            // 기존 차트 파괴
+            if (chartId === 'airquality_data' && airquality_data) {
+                airquality_data.destroy();
+                airquality_data = null;
+            }
+            if (chartId === 'airquality_wps' && airquality_wps) {
+                airquality_wps.destroy();
+                airquality_wps = null;
+            }
+            
+            fetch(folderPath + fileName)
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to load " + fileName);
+                return response.text();
+            })
+            .then(csvText => {
+                processCSV(csvText, chartId);
+
+                // ✅ Government Action 선택했을 때 설명 문장 넣기!
+                if (chartId === 'airquality_wps') {
+                    const descriptionDiv = document.getElementById("govDescription");
+                    descriptionDiv.innerText = govDescriptions[fileName] || "";
+                }
+            })
+            .catch(error => alert("CSV 파일을 불러오는 중 오류 발생: " + error));
+        }
+    
+        function processCSV(csvText, chartId) {
+            const rows = csvText.split("\n").map(row => row.trim()).filter(row => row);
+            if (rows.length <= 1) {
+                alert("CSV 파일이 비어 있거나 포맷이 잘못되었습니다.");
+                return;
+            }
+            const labels = [];
+            const values = [];
+    
+            rows.slice(1).forEach(row => {
+                const cols = row.split(",").map(col => col.trim());
+                if (cols.length > 2 && !isNaN(parseFloat(cols[2]))) {
+                    labels.push(cols[1]);
+                    values.push(parseFloat(cols[3]));
+                }
+            });
+    
+            const rankings = values
+                .map((value, index) => ({ value, index }))
+                .sort((a, b) => b.value - a.value)
+                .map((item, rank) => ({ ...item, rank: rank + 1 }))
+                .sort((a, b) => a.index - b.index)
+                .map(item => item.rank);
+    
+            if (labels.length === 0 || values.length === 0) {
+                alert("CSV에서 유효한 데이터를 찾을 수 없습니다.");
+                return;
+            }
+    
+            let datasetLabel = '';
+            let unit = '';
+            if (chartId === 'airquality_data') {
+                datasetLabel = 'Respondonts with Positive Rate(%)';
+                unit = '% Positive Response';
+            } else if (chartId === 'airquality_wps') {
+                datasetLabel = 'Government Actions';
+                ;
+            } 
+    
+            const ctx = document.getElementById(chartId).getContext('2d');
+            const newChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: datasetLabel,
+                        data: values,
+                        backgroundColor: labels.map(label => {
+                            if (label === 'MN 08') return '#999999';  // NYU purple
+                            if (label === 'MN 11') return '#8B0000';  // Coral red
+                            return '#e0e0e0';                         // Default gray
+                        }),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function (tooltipItem) {
+                                    const index = tooltipItem.dataIndex;
+                                    return `${labels[index]}: ${values[index]} ${unit} (Rank: ${rankings[index]})`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+    
+            // 차트 인스턴스 저장
+            if (chartId === 'airquality_data') {
+                airquality_data = newChart;
+            } else if (chartId === 'airquality_wps') {
+                airquality_wps = newChart;
+            } 
+        }
+    </script>
+</body>
+</html>

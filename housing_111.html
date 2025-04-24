@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gramentheme">
+    <meta name="description" content="Niotech - App Landing HTML Template">
+    <!-- ======== Page title ============ -->
+    <title>CUSP - NYC Neighborhood Dashboard</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< NiceSelect.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script> <!-- ✅ D3.js를 head에 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        .map-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* 지도 간격 */
+            margin-top: 20px;
+        }
+        .map-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dashboard-noise {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 0 auto;
+        max-width: 1200px;
+        margin-bottom: 60px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .other-charts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .txt-loading span {
+            color: #7444FD !important;  /* NYU Purple */
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="N">
+                    N
+                </span>
+                <span data-text-preloader="Y">
+                    Y
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="C">
+                    C
+                </span>
+                <span data-text-preloader="U">
+                    U
+                </span>
+                <span data-text-preloader="S">
+                    S
+                </span>
+                <span data-text-preloader="P">
+                    P
+                </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Cursor Start -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- Back To Top Start -->
+    <button id="back-top" class="back-to-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Header Section Start -->
+    <header class="header-section-1">
+        <div id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-middle">
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown active menu-thumb">
+                                                <a href="index.html">
+                                                    Home
+                                                </a>
+                                            <li>
+                                                <a href="about.html">
+                                                    About Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard.html">
+                                                    Dashboard
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="differences.html">
+                                                    Differences
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="faq.html">
+                                                    Faq's
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Area Start -->
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcumb Section S T A R T -->
+    <div class="breadcumb-section fix">
+        <div class="breadcumb-container-wrapper" data-bg-src="assets/images/bg/breadcumgBg.png">
+            <div class="container">
+                <div class="shape1"><img src="assets/images/shape/breadCumbShape1_1.png" alt="shape"></div>
+                <div class="shape2"><img src="assets/images/shape/breadCumbShape1_2.png" alt="shape"></div>
+                <div class="breadcumb-wrapper">
+                    <div class="page-heading">
+                        <h1>Project Details</h1>
+                        <div class="links">
+                            <a href="index.html">Home<span class="slash">/</span></a>Project Details
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Section S T A R T -->
+    <section class="project-details-section section-padding fix">
+        <div class="project-details-container-wrapper">
+            <div class="container">
+                <div class="project-details-wapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="main-thumb">
+                                <img src="assets/images/project/projecDetailstThumb1_1.png" alt="thumb" style="display: block; margin: 0 auto;">
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                                <div class="fancy-box style4">
+                                    <div class="content">
+                                        <h5>Sector 1</h5>
+                                        <p class="text">Conditions Data</p>
+                                    </div>
+                                    <div class="icon-box style2">
+                                        <img src="assets/images/icon/projectDetailsIcon1_1.svg" alt="icon">
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                                <div class="fancy-box style4">
+                                    <div class="content">
+                                        <h5>Sector 2</h5>
+                                        <p class="text">Neighborhood Sentiment:<br>What People are Concerned About</p>
+                                    </div>
+                                    <div class="icon-box style2">
+                                        <img src="assets/images/icon/projectDetailsIcon1_2.svg" alt="icon">
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            
+                                <div class="fancy-box style4">
+                                    <div class="content">
+                                        <h5>Sector 3</h5>
+                                        <p class="text">Government actions</p>
+                                    </div>
+                                    <div class="icon-box style2">
+                                        <img src="assets/images/icon/projectDetailsIcon1_3.svg" alt="icon">
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="single-desc">
+                            <div class="row gy-5">
+                                <div class="col-12">
+                                    <h3 class="single-desc-title">
+                                        🗽 MN11(East Harlem) Homeless Issue Related Dashboard
+                                    </h3>
+                                    <p class="text1">
+                                        Over 80,000 people in New York City rely on shelters each night, and this group includes a large portion of women and children 
+                                        (Coalition for the Homeless, 2024). Unemployment, high housing costs, and lack of affordable housing are the reasons which contribute 
+                                        to the homelessness problem. Research by the Urban Institute (2023) indicates that areas with low-income rates or high burden rates 
+                                        usually have more shelters for homelessness, and the homelessness rate is relatively high in these areas. The government should increase 
+                                        affordable housing, improve mental health services, and provide job training to homeless people, ultimately reducing the portion of 
+                                        homelessness in the city (National Alliance to End Homelessness, 2023).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="popupModal" class="popup"></div>
+
+
+                        <!-- 팝업 스타일 -->
+                        <style>
+                        #popupModal {
+                            display: none;
+                            position: absolute;
+                            background: white;
+                            border: 1px solid #ccc;
+                            padding: 6px 12px;
+                            font-size: 14px;
+                            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+                            border-radius: 4px;
+                            z-index: 1000;
+                            pointer-events: none;
+                            max-width: 200px;
+                            white-space: normal;
+                            word-break: break-word;
+                            }
+                        </style>
+                        
+                        <!-- 지도 표시 공간 -->
+                    
+                        <script src="https://d3js.org/d3.v7.min.js"></script>
+                        
+                        <!-- 두 번째 차트 -->
+                        <!-- 📊 Housing Complaints + 🗺️ 지도 나란히 정렬 -->
+                        <div class="dashboard-layout" style="display: flex; gap: 40px; justify-content: center; align-items: stretch; flex-wrap: wrap; margin-top: 60px;">
+
+                            <!-- 🗺️ 지도 왼쪽 -->
+                            <div id="mn08Map" style="
+                                flex: 1 1 400px;
+                                max-width: 480px;
+                                height: auto;
+                                display: flex;
+                                align-items: flex-start;
+                                margin-left: -50px;">
+                            </div>
+
+                            <!-- 📊 차트 오른쪽 -->
+                            <div class="noise-grid-section" style="flex: 1 1 600px; max-width: 700px;">
+                                <div class="dashboard-noise" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+
+                                    <!-- 🏕️ Homeless Encampment Chart -->
+                                    <div class="chart-card">
+                                        <h3>Homeless Encampment Complaints<span style="color: red;">*</span></h3>
+                                        <canvas id="encampmentChart"></canvas>
+                                        <div style="text-align: center; margin-top: 6px; font-size: 12px; color: #555;">
+                                            <span style="display: inline-flex; align-items: center;">
+                                                <span style="width: 14px; height: 6px; background-color: #A58BDF; display: inline-block; margin-right: 6px; border-radius: 2px;"></span>
+                                                Number of Complaints
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- 🧑‍🦯 Homeless Person Assistance Chart -->
+                                    <div class="chart-card">
+                                        <h3>Homeless Person Assistance<span style="color: red;">*</span></h3>
+                                        <canvas id="assistanceChart"></canvas>
+                                        <div style="text-align: center; margin-top: 6px; font-size: 12px; color: #555;">
+                                            <span style="display: inline-flex; align-items: center;">
+                                                <span style="width: 14px; height: 6px; background-color: #8e44ad; display: inline-block; margin-right: 6px; border-radius: 2px;"></span>
+                                                Number of Complaints
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            const years = ['2022', '2023', '2024'];
+
+                            const encampmentData = [1033, 376, 475];
+                            const assistanceData = [549, 396, 534];
+
+                            function createChart(canvasId, label, data, borderColor, backgroundColor) {
+                                new Chart(document.getElementById(canvasId), {
+                                    type: 'line',
+                                    data: {
+                                        labels: years,
+                                        datasets: [{
+                                            label: label + ' Complaints',
+                                            data: data,
+                                            borderColor: borderColor,
+                                            backgroundColor: backgroundColor,
+                                            tension: 0.4,
+                                            pointRadius: 5,
+                                            pointHoverRadius: 7
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        plugins: {
+                                            legend: { display: false },
+                                            tooltip: {
+                                                callbacks: {
+                                                    label: context => `Complaints: ${context.parsed.y}`
+                                                }
+                                            }
+                                        },
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true,
+                                                title: { display: false }
+                                            },
+                                            x: {
+                                                title: { display: true, text: 'Year' }
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+
+                            createChart("encampmentChart", "Encampment", encampmentData, '#A58BDF', 'rgba(165, 139, 223, 0.2)');
+                            createChart("assistanceChart", "Assistance", assistanceData, '#8e44ad', 'rgba(142, 68, 173, 0.2)');
+                        </script>
+
+                        <script>
+                            function drawMN08Map() {
+                            const width = 500;
+                            const height = 620;
+                            const highlightDistrict = 111;
+                            const highlightColor = "#8B0000"; // 진한 붉은색
+                            const defaultFill = "#ffe8cc";    // 연한 베이지 배경
+
+                            const svg = d3.select("#mn08Map")
+                                .append("svg")
+                                .attr("width", width)
+                                .attr("height", height)
+                                .style("margin-top", "-120px");
+
+                            const projection = d3.geoMercator()
+                                .center([-73.96, 40.77])
+                                .scale(46000)
+                                .translate([width / 2, height / 2]);
+
+                            const path = d3.geoPath().projection(projection);
+
+                            d3.json("assets/data/nycd.geojson").then(geojsonData => {
+                                svg.selectAll("path")
+                                    .data(geojsonData.features)
+                                    .enter()
+                                    .append("path")
+                                    .attr("d", path)
+                                    .attr("fill", d => d.properties.BoroCD === highlightDistrict ? highlightColor : "#ffe8cc")
+
+                                    .attr("stroke", "#333")
+                                    .attr("stroke-width", 0.8)
+                                    .on("mouseover", function (event, d) {
+                                        const boroCD = d.properties.BoroCD;
+                                        showPopup(event, `Community District: ${boroCD}`);
+                                        // 👉 색상 변경 없이 유지
+                                    })
+                                    .on("mousemove", movePopup)
+                                    .on("mouseout", function () {
+                                        hidePopup();
+                                    });
+                            });
+                        }
+                        // 페이지 로드시 지도 실행
+                        drawMN08Map();
+                    </script>
+
+                    <div class="highlight-quote mt-4 mb-4 wow fadeInUp" data-wow-delay=".8s" style="
+                                background-color: #f8f8f8;
+                                border-left: 4px solid #7444FD;
+                                padding: 24px;
+                                border-radius: 2px;
+                                position: relative;
+                                font-style: italic;">
+                    <p style="margin: 0; color: #444;">
+                        In New York, housing is more than shelter—it’s the foundation of a community. 
+                        Failing to prevent homelessness tears at our neighborhoods and dims the city’s future. - Carolyn Maloney
+                    </p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none"
+                    style="position: absolute; bottom: 16px; right: 16px;">
+                    <path d="M7.71428 20.0711H0.5V5.64258H14.9286V20.4531L9.97665 30.3568H3.38041L8.16149 20.7947L8.5233 20.0711H7.71428Z" stroke="#7444FD" />
+                    <path d="M28.2846 20.0711H21.0703V5.64258H35.4989V20.4531L30.547 30.3568H23.9507L28.7318 20.7947L29.0936 20.0711H28.2846Z" stroke="#7444FD" />
+                    </svg>
+                    </div>
+
+                    <!-- What People Are Talking About Section Title -->
+                    <div style="width: 100%; text-align: left; margin-left: 10px;margin-top: 40px; margin-bottom: 30px; ">
+                        <h2 style="font-size: 24px; font-weight: 700;">
+                        Neighborhood Sentiment: What People are Concerned About 
+                        </h2>
+                    </div>
+
+                    <!-- 💡 와이드 그래프 wrapper -->
+                    <!-- 🏘️ Public Housing & Homeless Services 만족도 그래프 -->
+              
+                    <div style="
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: stretch;
+                    gap: 40px;
+                    margin: 40px auto;
+                    max-width: 1400px;
+                    ">
+
+                    <!-- Public Housing 만족도 -->
+                    <div class="chart-card" style="flex: 1; padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        <h3 style="text-align: center; margin-bottom: 20px;">MN11 Resident Satisfaction with Public Housing<span style="color: red;">*</span></h3>
+                        <!-- 범례 -->
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; ">
+                            <div style="width: 12px; height: 12px; background-color: #BBB7D8; border-radius: 2px;"></div>
+                            <span>Satisfaction (%)</span>
+                            </div>
+                        <canvas id="publicHousingChart"></canvas>
+                        </div>
+    
+                        <!-- Services for Homeless People 만족도 -->
+                        <div class="chart-card" style="flex: 1; padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                            <h3 style="text-align: center; margin-bottom: 20px;">MN11 Resident Satisfaction with Services for Homeless People<span style="color: red;">*</span></h3>
+                        <!-- 범례 -->
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; ">
+                            <div style="width: 12px; height: 12px; background-color: #7444FD; border-radius: 2px;"></div>
+                            <span>Satisfaction (%)</span>
+                            </div>
+                        <canvas id="homelessServicesChart"></canvas>
+                        </div>
+                    </div>
+                    <p class="text1" style=" margin-left: 20px; margin-top: -20px;">
+                        This chart presents resident satisfaction, based on Citizens Budget Commission Residents' Survey. 
+                    </p>
+
+                    <!-- 📊 Chart.js 스크립트 -->
+                    <script>
+                    const satisfactionLabels = ['2008', '2017', '2023'];
+
+                    new Chart(document.getElementById("publicHousingChart"), {
+                        type: 'line',
+                        data: {
+                            labels: satisfactionLabels,
+                            datasets: [{
+                                label: 'Satisfaction (%)',
+                                data: [22.9, 20.9, 9.0],
+                                borderColor: '#BBB7D8',
+                                backgroundColor: 'rgba(187, 183, 216, 0.2)',
+                                tension: 0.4,
+                                pointRadius: 6,
+                                pointHoverRadius: 8
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            scales: {
+                                x: {
+                                    title: { display: true, text: 'Year' }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    title: { display: false }
+                                }
+                            }
+                        }
+                    });
+
+                    new Chart(document.getElementById("homelessServicesChart"), {
+                        type: 'line',
+                        data: {
+                            labels: satisfactionLabels,
+                            datasets: [{
+                                label: 'Satisfaction (%)',
+                                data: [16.5, 13.2, 13.3],
+                                borderColor: '#7444FD',
+                                backgroundColor: 'rgba(116, 68, 253, 0.2)',
+                                tension: 0.4,
+                                pointRadius: 6,
+                                pointHoverRadius: 8
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            scales: {
+                                x: {
+                                    title: { display: true, text: 'Year' }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    title: { display: false }
+                                }
+                            }
+                        }
+                    });
+                    </script>
+
+                    <!-- What People Are Talking About Section Title -->
+                    <div style="width: 100%; text-align: left; margin-left: 10px; margin-top: 50px; margin-bottom: 30px; ">
+                        <h2 style="font-size: 24px; font-weight: 700; margin: 0;">
+                        Government Actions
+                        </h2>
+                    </div>
+
+                    <!-- MN08 Complaints After Government Action (2022–2024) -->
+                    <!-- 🏘️ Section 3: Housing Trends from MMR (Line Chart Style) -->
+                    <div style="margin: 40px auto; max-width: 1400px;">
+
+                        <!-- 차트 카드 그룹 (flex로 배치) -->
+                        <div style="display: flex; flex-wrap: nowrap; justify-content: center; align-items: stretch; gap: 40px;">
+                        
+                        <!-- 카드 1 -->
+                        <div class="chart-card" style="flex: 1; padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                            <h3 style="text-align: center; margin-bottom: 20px;">HOME-STAT Clients Referred to Housing<span style="color: red;">*</span></h3>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; margin-bottom: 8px;">
+                            <div style="width: 12px; height: 12px; background-color: #6C5CE7; border-radius: 2px;"></div>
+                            <span>Clients Referred</span>
+                            </div>
+                            <canvas id="homeStatChart"></canvas>
+                        </div>
+                    
+                        <!-- 카드 2 -->
+                        <div class="chart-card" style="flex: 1; padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                            <h3 style="text-align: center; margin-bottom: 20px;">Estimated Unsheltered Homeless Individuals<span style="color: red;">*</span></h3>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; margin-bottom: 8px;">
+                            <div style="width: 12px; height: 12px; background-color: #B084F5; border-radius: 2px;"></div>
+                            <span>Unsheltered Homless Individuals</span>
+                            </div>
+                            <canvas id="unshelteredChart"></canvas>
+                        </div>
+                    
+                        </div> <!-- ⬅️ flex-row 끝 -->
+                    
+                        <p class="text1" style=" margin-left: 20px; margin-top: 20px;">
+                            These charts presents data based on MMR reports. 
+                            While community-level data is unavailable, these citywide metrics provide insight into enforcement activity.
+                        </p>
+                    </div>
+                    
+                    <script>
+                        // HOME-STAT 연결 데이터 (Line Chart)
+                        new Chart(document.getElementById("homeStatChart").getContext("2d"), {
+                        type: 'line',
+                        data: {
+                            labels: ['2021', '2022', '2023', '2024'],
+                            datasets: [{
+                            label: 'Clients Referred',
+                            data: [5454, 5021, 8569, 11503],
+                            borderColor: '#6C5CE7',
+                            backgroundColor: 'rgba(108, 92, 231, 0.2)',
+                            tension: 0.3,
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            fill: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            legend: { display: false }
+                            },
+                            scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: { stepSize: 500 }
+                            }
+                            }
+                        }
+                        });
+                    
+                        // 노숙인 추정 인구 데이터 (Line Chart)
+                        new Chart(document.getElementById("unshelteredChart").getContext("2d"), {
+                        type: 'line',
+                        data: {
+                            labels: ['2021', '2022', '2023'],
+                            datasets: [{
+                            label: 'Estimated Individuals',
+                            data: [3439, 4042, 4120],
+                            borderColor: '#B084F5',
+                            backgroundColor: 'rgba(176, 132, 245, 0.2)',
+                            tension: 0.3,
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            fill: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            legend: { display: false }
+                            },
+                            scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: { stepSize: 1000 }
+                            }
+                            }
+                        }
+                        });
+                    </script>
+
+                    <div class="single-desc2" style="margin-top: 40px;">
+                            <div class="row gy-5">
+                                <div class="col-12">
+                                    <h3 class="single-desc-title">
+                                        Results<span style="color: red;">*</span>
+                                    </h3>
+                                    <p class="text1">
+                                        Although the number of homeless encampments reported through 311 dropped from 1,033 in 2022 to 475 in 2024, 
+                                        residents still lack confidence about homeless issues in their neighborhoods. Satisfaction rates of public housing and 
+                                        homeless services are only 9% and 13.3%, respectively.  
+                                        <br>Citywide, the government made progress by providing shelters for homeless people and those in need. 
+                                        The number of public housing placements through the government's HOME-STAT program increased from 5,453 in 2021 to 11,503 in 2024. 
+                                        However, citywide statistics from the government show that the number of estimated unsheltered homeless individuals increased from 
+                                        3,439 in 2021 to 4,120 in 2023.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Caveats Box (subtle style) -->
+                            <div style="background-color: #fffbed; padding: 20px; margin-top: 30px; border-radius: 8px; color: #333; font-size: 15px; line-height: 1.6;">
+                                <p>
+                                    <span style="color: red;">*</span>Caveats: None of our data sets are ideal, and many are not comparable temporally or substantively. 
+                                    For example, while far from ideal, we chose to use the City’s Community Board Districts as a proxy for neighborhoods since much of the city’s 
+                                    data and service delivery infrastructure is organized along these lines. Measures of community sentiment are approximated from resident surveys 
+                                    and 311 data, which are imprecise. Some government actions we chose do not capture the full scope of government actions being taken, or are 
+                                    not publicly available by community district. (For example DEP summonses may address noise, air pollution, or a host of other topics.  
+                                    In another example, while 311 complaints are a valid proxy indicator of some neighborhood sentiment, they do have some shortcomings as a truly representative indicator. 
+                                    In yet another case the government’s self-reported statistic about the very high percentage of complaints “resolved” begs further detail). But the project’s purpose is 
+                                    to suggest what a neighborhood dashboard might look like, even with these imprecisions, and to suggest possible pathways to creating an effective one for residents, 
+                                    policymakers, and government alike. Therefore, these are expressed as “Results,”  despite the acknowledged shortcomings of the data.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer Section    S T A R T -->
+    <footer class="footer-section position-relative">
+        <div class="footer-widgets-wrapper style1 fix">
+            <div class="shape1"><img src="assets/images/shape/footerShape1_1.png" alt="shape"></div>
+            <div class="shape2"><img src="assets/images/shape/footerShape1_2.png" alt="shape"></div>
+            <div class="shape3"><img src="assets/images/shape/footerShape1_3.png" alt="shape"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="footer-content">
+                                <p>
+                                    Cities are made of stories, people, and data. At NYU, we use all three to build better urban futures.
+                                </p>
+                                <p><small>This site is not available on mobile devices. Please access it from a desktop.</small></p>
+                                <div class="store-links">
+                                    <div class="CUSP">
+                                        <a href="https://engineering.nyu.edu/research-innovation/centers/cusp"> NYU CUSP</a>
+                                    </div>
+                                    <div class="marroninstitute">
+                                        <a href="https://marroninstitute.nyu.edu/"> NYU Marron Institute</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+    </footer>
+
+
+
+    <!--<< All JS Plugins >>-->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!--<< Tilt Js >>-->
+    <script src="assets/js/tilt.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific popup Js >>-->
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="assets/js/wow.min.js"></script>
+    <!--<< NIce Select Js >>-->
+    <script src="assets/js/nice-select.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
